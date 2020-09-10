@@ -11,7 +11,7 @@ import com.kubaja.tpjg.TinyCore
 abstract class AbstractActor(protected val texture: Texture) : Actor() {
 
     protected var textureAspectRatio : Float = 0f
-    protected lateinit var body: Body
+    lateinit var body: Body
 
     init {
         textureAspectRatio = texture.width.toFloat() / texture.height.toFloat()
@@ -24,5 +24,8 @@ abstract class AbstractActor(protected val texture: Texture) : Actor() {
 
         x = body.position.x - (width / 2)
         y = body.position.y - (height / 2)
+
+
+        rotation = Math.toDegrees(body.angle.toDouble()).toFloat()
     }
 }
