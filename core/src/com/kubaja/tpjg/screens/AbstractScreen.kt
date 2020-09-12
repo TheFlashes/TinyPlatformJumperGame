@@ -16,6 +16,7 @@ abstract class AbstractScreen(protected val tinyCore: TinyCore) : Screen {
     lateinit var pixelFont: BitmapFont
 
     protected val extendViewPort = ExtendViewport(TinyCore.WORLD_WIDTH, TinyCore.WORLD_HEIGHT, TinyCore.WORLD_WIDTH, TinyCore.WORLD_HEIGHT * 1.15625f)
+    protected val extendViewPortUI = ExtendViewport(TinyCore.WORLD_WIDTH, TinyCore.WORLD_HEIGHT, TinyCore.WORLD_WIDTH, TinyCore.WORLD_HEIGHT * 1.15625f)
     protected val batch = SpriteBatch()
 
     fun initFont() {
@@ -24,6 +25,8 @@ abstract class AbstractScreen(protected val tinyCore: TinyCore) : Screen {
         generatorParams.size = 20;
         generatorParams.color = Color.WHITE
         pixelFont = pixelFontTTF.generateFont(generatorParams)
+
+
     }
 
     override fun show() {

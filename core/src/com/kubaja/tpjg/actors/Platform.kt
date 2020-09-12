@@ -13,7 +13,7 @@ class Platform(texture: Texture, world: World) : AbstractActor(texture) {
     var isLast = false
 
     init {
-        val polygonCords = arrayOf(Vector2(-1.5f, 0.2f), Vector2(1.5f, 0.2f), Vector2(1.5f, 0.25f), Vector2(-1.5f, 0.25f))
+        val polygonCords = arrayOf(Vector2(-1.5f, 0.245f), Vector2(1.5f, 0.245f), Vector2(1.5f, 0.25f), Vector2(-1.5f, 0.25f))
         val polygonShape = PolygonShape()
         polygonShape.set(polygonCords)
 

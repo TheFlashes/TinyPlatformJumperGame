@@ -21,6 +21,7 @@ class LoadingScreen(core: TinyCore) : AbstractScreen(core) {
         tinyCore.manager.load("hero.png", Texture::class.java)
         tinyCore.manager.load("badlogic.jpg", Texture::class.java)
         tinyCore.manager.load("platform2.png", Texture::class.java)
+        tinyCore.manager.load("buttonArrow.png", Texture::class.java)
 
         val resolver: FileHandleResolver = InternalFileHandleResolver()
         tinyCore.manager.setLoader(FreeTypeFontGenerator::class.java, FreeTypeFontGeneratorLoader(resolver))

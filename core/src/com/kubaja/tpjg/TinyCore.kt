@@ -8,8 +8,8 @@ class TinyCore : Game() {
 
     companion object {
         const val PIXEL_MULTIPLER: Float = 2f
-        const val WORLD_HEIGHT = 16f //3.5  9  16  28.5
-        const val WORLD_WIDTH = 9f       //2  5  9   16
+        const val WORLD_HEIGHT = 21.33333f //3.5  9  16  28.5  21.33333
+        const val WORLD_WIDTH = 12f       //2  5  9   16  12
     }
 
     lateinit var manager: AssetManager
