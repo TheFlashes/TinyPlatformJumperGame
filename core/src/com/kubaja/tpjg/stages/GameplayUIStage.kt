@@ -18,12 +18,12 @@ import com.kubaja.tpjg.other.GameButton
 
 class GameplayUIStage(manager: AssetManager) : Stage() {
 
-    private val BUTTON_WIDTH = width / 4f
+    private val BUTTON_WIDTH = width / 3f
     private val BUTTON_HEIGHT = width / 1.75f
 
     val leftButton = GameButton(0f, 0f, BUTTON_WIDTH, BUTTON_HEIGHT, manager.get("buttonArrow.png", Texture::class.java), 90f)
     val rightButton = GameButton(BUTTON_WIDTH, 0f, BUTTON_WIDTH, BUTTON_HEIGHT, manager.get("buttonArrow.png", Texture::class.java), -90f)
-    val jumpButton = GameButton(BUTTON_WIDTH * 2, 0f, BUTTON_WIDTH * 2, BUTTON_HEIGHT, manager.get("buttonArrow.png", Texture::class.java), 0f)
+    val jumpButton = GameButton(BUTTON_WIDTH * 2, 0f, BUTTON_WIDTH, BUTTON_HEIGHT, manager.get("buttonArrow.png", Texture::class.java), 0f)
 
     init {
         addActor(leftButton)

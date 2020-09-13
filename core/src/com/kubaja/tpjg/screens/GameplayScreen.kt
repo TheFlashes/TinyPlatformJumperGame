@@ -29,9 +29,9 @@ class GameplayScreen(core: TinyCore) : AbstractScreen(core) {
     override fun render(delta: Float) {
         super.render(delta)
 
-        if (gameplayUIStage.leftButton.isPressed || Gdx.input.isKeyPressed(Input.Keys.A)) { gameplayStage.hero.CONTROL_LEFT = true }
-        if (gameplayUIStage.rightButton.isPressed ||Gdx.input.isKeyPressed(Input.Keys.D)) gameplayStage.hero.CONTROL_RIGHT = true
-        if (gameplayUIStage.jumpButton.isPressed ||Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) gameplayStage.hero.CONTROL_JUMP = true
+        if (gameplayUIStage.leftButton.isDown || Gdx.input.isKeyPressed(Input.Keys.A)) { gameplayStage.hero.CONTROL_LEFT = true }
+        if (gameplayUIStage.rightButton.isDown ||Gdx.input.isKeyPressed(Input.Keys.D)) { gameplayStage.hero.CONTROL_RIGHT = true }
+        if (gameplayUIStage.jumpButton.justPressed() ||Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) { gameplayStage.hero.CONTROL_JUMP = true }
 
         gameplayStage.act(delta)
         gameplayStage.draw()
@@ -41,7 +41,6 @@ class GameplayScreen(core: TinyCore) : AbstractScreen(core) {
 
         batch.begin()
             pixelFont.draw(batch, "x: " + gameplayStage.hero.x.roundToInt() + "\ny: " + gameplayStage.hero.y.roundToInt() + "\nFPS: " + Gdx.graphics.framesPerSecond, 5f, Gdx.graphics.height.toFloat() - 5f)
-        //batch.draw(tinyCore.manager.get("hero.png", Texture::class.java), 0f, 0f)
         batch.end()
     }
 }
