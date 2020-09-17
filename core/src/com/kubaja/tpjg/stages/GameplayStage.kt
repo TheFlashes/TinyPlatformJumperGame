@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.physics.box2d.*
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.utils.viewport.ExtendViewport
+import com.kubaja.tpjg.actors.Background
 import com.kubaja.tpjg.actors.Hero
 import com.kubaja.tpjg.actors.Platform
 import kotlin.math.min
@@ -23,15 +24,19 @@ class GameplayStage(viewport: ExtendViewport, manager: AssetManager) : Stage(vie
     val world = World(Vector2(0f, -40f), true)
     val debugRenderer = Box2DDebugRenderer()
 
+    val background : Background
     val hero: Hero
     val platforms : Array<Platform>
 
     init {
         camera.position.set(0f, 0f, 0f)
 
+        background = Background(manager)
         hero = Hero(manager.get("hero.png", Texture::class.java), world)
         platforms = Array(8) { Platform(manager.get("platform2.png", Texture::class.java), world) }
 
+
+        addActor(background)
         for ((i, p) in platforms.withIndex()) {
             val pX = Random.nextDouble(-3.0, 3.0).toFloat()
             val pY = (i.toFloat() * 4)
@@ -96,5 +101,7 @@ class GameplayStage(viewport: ExtendViewport, manager: AssetManager) : Stage(vie
                 }
             }
         }
+
+        background.heroY = hero.y
     }
 }
