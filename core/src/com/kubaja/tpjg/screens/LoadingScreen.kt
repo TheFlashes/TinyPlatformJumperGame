@@ -29,7 +29,7 @@ class LoadingScreen(core: TinyCore) : AbstractScreen(core) {
         tinyCore.manager.setLoader(FreeTypeFontGenerator::class.java, FreeTypeFontGeneratorLoader(resolver))
         tinyCore.manager.setLoader(BitmapFont::class.java, ".ttf", FreetypeFontLoader(resolver))
 
-        tinyCore.manager.load("pixelart.ttf", FreeTypeFontGenerator::class.java)
+        tinyCore.manager.load("digit2000.ttf", FreeTypeFontGenerator::class.java)
     }
 
     override fun render(delta: Float) {

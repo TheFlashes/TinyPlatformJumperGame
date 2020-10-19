@@ -28,6 +28,9 @@ class GameplayStage(viewport: ExtendViewport, manager: AssetManager) : Stage(vie
     val hero: Hero
     val platforms : Array<Platform>
 
+    var points = 0
+    private var pointsAdded = false
+
     init {
         camera.position.set(0f, 0f, 0f)
 
@@ -73,9 +76,23 @@ class GameplayStage(viewport: ExtendViewport, manager: AssetManager) : Stage(vie
         if (hero.body.linearVelocity.y > 0.0f) {
             for (platform in platforms) platform.body.fixtureList.first().isSensor = true
             hero.isInJump = true
+            pointsAdded = false
         } else if (hero.body.linearVelocity.y <= 0.0f) {
             for (platform in platforms) platform.body.fixtureList.first().isSensor = false
-            if (hero.isTouchingPlatform) hero.isInJump = false
+            if (hero.isTouchingPlatform) {
+                hero.isInJump = false
+                if (hero.y.toInt() > hero.jumpHighestYPos) {
+                    hero.jumpHighestYPos = hero.y.toInt()
+
+                    if (!pointsAdded) {
+                        val pointsToAdd = (hero.y - hero.jumpStartYPos).toInt() / 4
+                        if (pointsToAdd > 0) {
+                            points += pointsToAdd
+                            pointsAdded = true
+                        }
+                    }
+                }
+            }
         }
 
         val frameTime = min(delta, 0.25f)

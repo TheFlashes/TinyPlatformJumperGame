@@ -40,7 +40,7 @@ class GameplayScreen(core: TinyCore) : AbstractScreen(core) {
         //gameplayStage.debugRenderer.render(gameplayStage.world, gameplayStage.camera.combined)
 
         batch.begin()
-            pixelFont.draw(batch, "x: " + gameplayStage.hero.x.roundToInt() + "\ny: " + gameplayStage.hero.y.roundToInt() + "\nFPS: " + Gdx.graphics.framesPerSecond, 5f, Gdx.graphics.height.toFloat() - 5f)
+            pixelFont.draw(batch, "x: " + gameplayStage.hero.x.roundToInt() + "\ny: " + gameplayStage.hero.y.roundToInt() + "\nFPS: " + Gdx.graphics.framesPerSecond + "\nPoints: " + gameplayStage.points, 5f, Gdx.graphics.height.toFloat() - 5f)
         batch.end()
     }
 }

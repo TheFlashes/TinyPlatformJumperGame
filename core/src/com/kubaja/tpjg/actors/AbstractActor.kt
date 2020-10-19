@@ -25,7 +25,6 @@ abstract class AbstractActor(protected val texture: Texture) : Actor() {
         x = body.position.x - (width / 2)
         y = body.position.y - (height / 2)
 
-
         rotation = Math.toDegrees(body.angle.toDouble()).toFloat()
     }
 }

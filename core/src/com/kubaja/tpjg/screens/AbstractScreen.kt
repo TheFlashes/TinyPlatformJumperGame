@@ -20,13 +20,11 @@ abstract class AbstractScreen(protected val tinyCore: TinyCore) : Screen {
     protected val batch = SpriteBatch()
 
     fun initFont() {
-        pixelFontTTF = tinyCore.manager.get("pixelart.ttf", FreeTypeFontGenerator::class.java)
+        pixelFontTTF = tinyCore.manager.get("digit2000.ttf", FreeTypeFontGenerator::class.java)
         val generatorParams = FreeTypeFontGenerator.FreeTypeFontParameter()
-        generatorParams.size = 20;
+        generatorParams.size = 30 * (Gdx.graphics.width / 405);
         generatorParams.color = Color.WHITE
         pixelFont = pixelFontTTF.generateFont(generatorParams)
-
-
     }
 
     override fun show() {

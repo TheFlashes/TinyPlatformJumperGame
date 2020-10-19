@@ -19,6 +19,8 @@ class Hero(texture: Texture, world: World) : AbstractActor(texture) {
 
     var jumpQueue = false
     var jumpQueueSteps = 0
+    var jumpStartYPos = 0
+    var jumpHighestYPos = 0
 
     var CONTROL_LEFT = false
     var CONTROL_RIGHT = false
@@ -74,10 +76,10 @@ class Hero(texture: Texture, world: World) : AbstractActor(texture) {
             else body.applyForceToCenter(15.0f, 0.0f, true)
         }
         if (jumpQueue && jumpQueueSteps > 0 && !isInJump && body.linearVelocity.y == 0.0f) {
-            body.applyForceToCenter(0f, 750.0f,true)
+            jump()
             jumpQueue = false
         } else if (CONTROL_JUMP) {
-            if (!isInJump && body.linearVelocity.y == 0.0f) body.applyForceToCenter(0f, 750.0f,true)
+            if (!isInJump && body.linearVelocity.y == 0.0f) jump()
             else if (!jumpQueue) {
                 jumpQueue = true
                 jumpQueueSteps = 10
@@ -102,5 +104,10 @@ class Hero(texture: Texture, world: World) : AbstractActor(texture) {
     override fun draw (batch: Batch?, parentAlpha: Float) {
         if (batch == null) return
         batch.draw(texture, x, y, width/2.0f, height/2.0f, width, height, 1f, 1f, rotation, 0, 0, texture.width, texture.height, false, false)
+    }
+
+    private fun jump() {
+        jumpStartYPos = y.toInt()
+        body.applyForceToCenter(0f, 750.0f,true)
     }
 }
